@@ -1,5 +1,7 @@
 package geometry;
 
+import java.awt.Graphics;
+
 public class Donut extends Circle {
 	private int innerR;
 	
@@ -28,6 +30,12 @@ public class Donut extends Circle {
 	}
 	
 	@Override
+	public void draw(Graphics g) {
+		super.draw(g);
+		g.drawOval(center.getX() - innerR, center.getY() - innerR, 2*innerR, 2*innerR);
+	}
+	
+	@Override
 	public double area() {
 		return super.area() - innerR * innerR * Math.PI;
 	}
@@ -41,8 +49,13 @@ public class Donut extends Circle {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Donut) {
-			Donut temp = (Donut) obj;
+			/*Donut temp = (Donut) obj;
 			if (center.equals(temp.center) && innerR == temp.innerR && r == temp.r) {
+				return true;
+			}*/
+			
+			Donut temp = (Donut) obj;
+			if (super.equals(new Circle(temp.center, temp.r)) && temp.innerR == innerR) {
 				return true;
 			}
 		}
@@ -57,4 +70,3 @@ public class Donut extends Circle {
 		this.innerR = innerR;
 	}
 }
-
