@@ -61,7 +61,15 @@ public class Test {
 				"\nRadius c1: " + c1.getR() +
 				"\nSelected c1: " + c1.isSelected());
 		
-		c1.setR((int) c1.getCenter().distance(l1.getStartPoint().getX(), l1.getStartPoint().getY()));
+		//c1.setR((int) c1.getCenter().distance(l1.getStartPoint().getX(), l1.getStartPoint().getY()));
+		
+		try {
+			c1.setR(-10);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//System.out.println("R c1: " + c1.getR());
+		
 		System.out.println("Radius c1: " + c1.getR());
 		
 		c1.setSelected(c1.getCenter().getX() > r1.getUpperLeft().getY());
@@ -135,7 +143,7 @@ public class Test {
 		
 		Donut d1 = new Donut();
 		d1.setCenter(new Point(10, 20));
-		d1.setR(5);
+		//d1.setR(5);
 		d1.setInnerR(3);
 		
 		System.out.println(d1);
